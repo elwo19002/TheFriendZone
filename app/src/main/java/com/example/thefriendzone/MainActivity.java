@@ -13,5 +13,4 @@ public class MainActivity extends AppCompatActivity {
     }
     //Jair was here.
     //Hyrum was here.
-    //merge conflict
 }
