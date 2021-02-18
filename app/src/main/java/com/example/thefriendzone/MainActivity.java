@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
     }
     //Jair was here.
     //Hyrum was here.
-    //HEY JAIR
+    //HEY JAIR, crazy day?
     //Karly was here
 }
