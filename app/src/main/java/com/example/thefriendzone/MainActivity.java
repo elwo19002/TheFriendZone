@@ -13,5 +13,10 @@ public class MainActivity extends AppCompatActivity {
     }
     //Jair was here.
     //Hyrum was here.
-    //HEY JAIR
+    //HEY JAIR, crazy day?
+    //HEY HOWDY HEY
+    //Karly was here
+    //Jaden was here as well
+    //Hola
+    //Dum dum dee dum
 }
