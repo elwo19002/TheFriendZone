@@ -1,7 +1,7 @@
 package com.example.thefriendzone;
 
 import org.junit.Test;
-
+//import com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +11,16 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void password_isCorrect() {
+        assertEquals("password", "password");
     }
+
+    //public class UsernameValidatorTest {
+    //@Test
+    //public void usernameValidator_CorrectUsername_returnsTrue(){
+    //Object isValidUsername;
+    //assertThat(UsernameValidatorTest.isValidUsername("Name_Name")).isTrue();
+    //}
+//}
+
 }
