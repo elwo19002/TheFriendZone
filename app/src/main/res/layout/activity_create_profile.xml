@@ -7,7 +7,7 @@
     tools:context=".CreateProfile">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="29dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -27,7 +27,7 @@
         tools:layout_editor_absoluteY="92dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -38,7 +38,7 @@
 
     <!--Website to help with drop-down menus: https://developer.android.com/guide/topics/ui/controls/spinner-->
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,20 +48,20 @@
         tools:layout_editor_absoluteY="275dp" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerCategories"
         android:layout_width="411dp"
         android:layout_height="41dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="342dp" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerInterests"
         android:layout_width="412dp"
         android:layout_height="42dp"
         tools:layout_editor_absoluteY="401dp" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -71,7 +71,7 @@
         tools:layout_editor_absoluteY="150dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextBio"
         android:layout_width="203dp"
         android:layout_height="117dp"
         android:ems="10"
@@ -81,7 +81,7 @@
         tools:layout_editor_absoluteY="443dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCreateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Profile"
@@ -89,7 +89,7 @@
         tools:layout_editor_absoluteY="658dp" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxTerms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I Agree To The Terms and Conditions"
@@ -97,7 +97,7 @@
         tools:layout_editor_absoluteY="560dp" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBoxAllowLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Allow Location"
