@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnLogin" type="id" />
+    <item name="btnCreateAccount" type="id" />
+    <item name="password" type="id" />
+    <item name="username" type="id" />
+    <item name="welcome" type="id" />
+</resources>
