@@ -14,7 +14,8 @@
         android:hint="First Name"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="29dp" />
+        tools:layout_editor_absoluteY="29dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -24,7 +25,8 @@
         android:hint="Last Name"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="92dp" />
+        tools:layout_editor_absoluteY="92dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextUsername"
@@ -34,7 +36,8 @@
         android:hint="Username"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="209dp" />
+        tools:layout_editor_absoluteY="209dp"
+        tools:ignore="MissingConstraints" />
 
     <!--Website to help with drop-down menus: https://developer.android.com/guide/topics/ui/controls/spinner-->
     <EditText
@@ -45,20 +48,23 @@
         android:hint="Password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="275dp" />
+        tools:layout_editor_absoluteY="275dp"
+        tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/spinnerCategories"
         android:layout_width="411dp"
         android:layout_height="41dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="342dp" />
+        tools:layout_editor_absoluteY="342dp"
+        tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/spinnerInterests"
         android:layout_width="412dp"
         android:layout_height="42dp"
-        tools:layout_editor_absoluteY="401dp" />
+        tools:layout_editor_absoluteY="401dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextEmailAddress"
@@ -68,7 +74,8 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="150dp" />
+        tools:layout_editor_absoluteY="150dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextBio"
@@ -78,7 +85,8 @@
         android:hint="Create a Description"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="443dp" />
+        tools:layout_editor_absoluteY="443dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonCreateProfile"
@@ -86,7 +94,8 @@
         android:layout_height="wrap_content"
         android:text="Create Profile"
         tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="658dp" />
+        tools:layout_editor_absoluteY="658dp"
+        tools:ignore="MissingConstraints" />
 
     <CheckBox
         android:id="@+id/checkBoxTerms"
@@ -94,7 +103,8 @@
         android:layout_height="wrap_content"
         android:text="I Agree To The Terms and Conditions"
         tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="560dp" />
+        tools:layout_editor_absoluteY="560dp"
+        tools:ignore="MissingConstraints" />
 
     <CheckBox
         android:id="@+id/checkBoxAllowLocation"
@@ -102,5 +112,6 @@
         android:layout_height="wrap_content"
         android:text="Allow Location"
         tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="608dp" />
+        tools:layout_editor_absoluteY="608dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
