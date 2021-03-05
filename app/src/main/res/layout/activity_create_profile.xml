@@ -91,7 +91,6 @@
         android:layout_height="35dp"
         android:layout_marginTop="680dp"
         android:layout_marginLeft="155dp"
-        android:layout_leftHorizontal="true"
         android:text="I Agree To The Terms and Conditions"/>
 
     <CheckBox
@@ -99,7 +98,6 @@
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:layout_marginLeft="45dp"
-        android:layout_leftHorizontal="true"
         android:layout_marginTop="680dp"
         android:text="Allow Location" />
 
