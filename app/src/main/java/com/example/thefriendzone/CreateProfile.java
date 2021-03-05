@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,9 +28,6 @@ public class CreateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         fAuth = FirebaseAuth.getInstance();
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
@@ -50,11 +48,18 @@ public class CreateProfile extends AppCompatActivity {
             public void onClick(View v) {
                 String firstName=createFirstName.getText().toString();
                 String lastName=createLastName.getText().toString();
+                String bio =profileBio.getText().toString();
                 String email=createEmailAddress.getText().toString();
                 String password=createPassword.getText().toString();
                 String confPass=confPassword.getText().toString();
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
+
+                if (email!= null) {
+                    firstName = email.getFirstName();
+                    lastName = email.getLastName();
+                    bio = email.getbio();
+                }
 
                 if(firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
@@ -83,6 +88,7 @@ public class CreateProfile extends AppCompatActivity {
                 if (!(location.isChecked())){
                     checkBoxAllowLocation.setError("We can't find you friends if we don't know where you are");
                 }
+
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
                 fAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
 
