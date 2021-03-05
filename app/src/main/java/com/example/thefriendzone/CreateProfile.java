@@ -9,14 +9,24 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class CreateProfile extends AppCompatActivity {
     EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
     Button buttonCreateProfile;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
+    FirebaseAuth fAuth;
 
-    Firebase Auth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        fAuth = FirebaseAuth.getInstance();
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
@@ -73,7 +83,11 @@ public class CreateProfile extends AppCompatActivity {
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
                 fAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>(){
 
-                }
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+
+                    }
+                });
 
             }
 
