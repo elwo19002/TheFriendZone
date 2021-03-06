@@ -80,6 +80,10 @@ public class CreateProfile extends AppCompatActivity {
                     confPassword.setError("We must confirm your password");
                     return;
                 }
+                if(!password.equals(confPass)) {
+                    confPassword.setError("The passwords must match");
+                    return;
+                }
                 if (!(terms.isChecked())){
                     checkBoxTerms.setError("You must agree to the terms");
                     return;
