@@ -55,11 +55,11 @@ public class CreateProfile extends AppCompatActivity {
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
 
-                if (email!= null) {
-                    firstName = email.getFirstName();
-                    lastName = email.getLastName();
-                    bio = email.getbio();
-                }
+                //if (email!= null) {
+                   // firstName = email.getFirstName();
+                   // lastName = email.getLastName();
+                    //bio = email.getbio();
+                //}
 
                 if(firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
