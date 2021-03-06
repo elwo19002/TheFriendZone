@@ -89,7 +89,7 @@
         android:id="@+id/checkBoxTerms"
         android:layout_width="215dp"
         android:layout_height="35dp"
-        android:layout_marginTop="680dp"
+        android:layout_marginTop="500dp"
         android:layout_marginLeft="155dp"
         android:text="I Agree To The Terms and Conditions"/>
 
@@ -98,16 +98,16 @@
         android:layout_width="100dp"
         android:layout_height="35dp"
         android:layout_marginLeft="45dp"
-        android:layout_marginTop="680dp"
+        android:layout_marginTop="500dp"
         android:text="Allow Location" />
 
     <Button
         android:id="@+id/buttonCreateProfile"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:layout_marginTop="625dp"
+        android:layout_marginTop="550dp"
         android:layout_centerHorizontal="true"
-        android:onClick="onCreateProfile"
+
         android:text="Create Profile"/>
 
 </RelativeLayout>

@@ -41,7 +41,6 @@ public class CreateProfile extends AppCompatActivity {
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
 
-        //fAuth=FirebaseAuth.getInstance();
 
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +95,7 @@ public class CreateProfile extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         //send user to next page. Eventually send to matches, for now FriendZone
                         startActivity(new Intent(getApplicationContext(), FriendZone.class));
+                        Toast.makeText(CreateProfile.this, "Profile Created", Toast.LENGTH_SHORT).show();
                         finish();
 
                     }
