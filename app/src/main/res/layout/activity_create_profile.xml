@@ -63,14 +63,16 @@
         android:hint="Confirm Password"
         android:inputType="textPassword"/>
 
-    <Spinner
+
+
+    <com.example.thefriendzone.MultiSelectCategories
         android:id="@+id/profileCategories"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
         android:layout_marginTop="340dp"
         android:layout_centerHorizontal="true"/>
 
-    <Spinner
+    <com.example.thefriendzone.MultiSelectInterests
         android:id="@+id/profileInterests"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
