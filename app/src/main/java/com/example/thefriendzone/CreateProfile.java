@@ -69,38 +69,46 @@ public class CreateProfile extends AppCompatActivity {
 
                 if(firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
-                    Log.v(TAG, "No name");
+                    Log.w(TAG, "No First Name");
                     return;
                 }
                 if(lastName.isEmpty()){
                     createFirstName.setError("Last Name is Required");
+                    Log.w(TAG, "No Last Name");
                     return;
                 }
                 if (email.isEmpty()){
                     createEmailAddress.setError("Email is Required");
+                    Log.w(TAG, "No Email");
                     return;
                 }
                 if (password.isEmpty()){
                     createPassword.setError("Password is Required");
+                    Log.w(TAG, "No Password");
                     return;
                 }
                 if (confPass.isEmpty()){
                     confPassword.setError("We must confirm your password");
+                    Log.w(TAG, "No Confirm Password");
                     return;
                 }
                 if(!password.equals(confPass)) {
                     confPassword.setError("The passwords must match");
+                    Log.w(TAG, "Passwords Don't Match");
                     return;
                 }
                 if (!(terms.isChecked())){
                     checkBoxTerms.setError("You must agree to the terms");
+                    Log.w(TAG, "Did not agree to terms");
                     return;
                 }
                 if (!(location.isChecked())){
                     checkBoxAllowLocation.setError("We can't find you friends if we don't know where you are");
+                    Log.w(TAG, "No Location Permitted");
                 }
 
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Data Validated");
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -110,6 +118,7 @@ public class CreateProfile extends AppCompatActivity {
                         else{
                             String user_id = fAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                            Log.i(TAG, "User account successfully created");
 
                             Map newMap = new HashMap();
                             newMap.put("First", firstName);

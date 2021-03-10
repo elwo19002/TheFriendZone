@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class Login extends AppCompatActivity {
     Button buttonCreateProfile, buttonLogin;
     EditText user_email, password;
     FirebaseAuth firebaseAuth;
+    private static final String TAG = "MyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +48,13 @@ public class Login extends AppCompatActivity {
                 // extract or validate
                 if(user_email.getText().toString().isEmpty()){
                     user_email.setError("Email is missing");
+                    Log.w(TAG, "Email is missing to login");
                     return;
                 }
 
                 if(password.getText().toString().isEmpty()){
                     password.setError("Password is missing");
+                    Log.w(TAG, "Password is missing to login");
                     return;
                 }
 
@@ -59,6 +63,7 @@ public class Login extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         //Successful Login
                         startActivity(new Intent(getApplicationContext(), FriendZone.class));
+                        Log.i(TAG, "Sucessfully logged in");
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
