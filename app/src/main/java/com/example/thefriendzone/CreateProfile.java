@@ -117,8 +117,9 @@ public class CreateProfile extends AppCompatActivity {
 
                         }
                     }
-                    }
-                })
+
+                });
+            }
 
 //                    @Override
 //                    public void onSuccess(AuthResult authResult) {
