@@ -1,9 +1,5 @@
 package com.example.thefriendzone;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,10 +7,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CreateProfile extends AppCompatActivity {
@@ -28,6 +32,7 @@ public class CreateProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         fAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
@@ -93,25 +98,45 @@ public class CreateProfile extends AppCompatActivity {
                 }
 
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
-                fAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //send user to next page. Eventually send to matches, for now FriendZone
-                        startActivity(new Intent(getApplicationContext(), FriendZone.class));
-                        Toast.makeText(CreateProfile.this, "Profile Created", Toast.LENGTH_SHORT).show();
-                        finish();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(CreateProfile.this, "Error creating user", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            String user_id = fAuth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
+                            Map newMap = new HashMap();
+                            newMap.put("First", firstName);
+                            newMap.put("Last", lastName);
+                            newMap.put("Bio", bio);
+
+                            current_user_db.setValue(newMap);
+
+                        }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+                })
 
-                });
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//                        //send user to next page. Eventually send to matches, for now FriendZone
+//                        startActivity(new Intent(getApplicationContext(), FriendZone.class));
+//                        Toast.makeText(CreateProfile.this, "Profile Created", Toast.LENGTH_SHORT).show();
+//                        finish();
+//
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                });
 
-            }
+
 
         });
 
