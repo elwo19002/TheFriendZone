@@ -1,6 +1,7 @@
 package com.example.thefriendzone;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,6 +27,7 @@ public class CreateProfile extends AppCompatActivity {
     Button buttonCreateProfile;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
+    private static final String TAG = "MyActivity";
 
 
     @Override
@@ -67,6 +69,7 @@ public class CreateProfile extends AppCompatActivity {
 
                 if(firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
+                    Log.v(TAG, "No name");
                     return;
                 }
                 if(lastName.isEmpty()){
