@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -30,6 +31,9 @@ public class CreateProfile extends AppCompatActivity {
     Button buttonCreateProfile;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
+    com.example.thefriendzone.MultiSelectInterests profileInterests;
+    com.example.thefriendzone.MultiSelectCategories profileCategories;
+
     private static final String TAG = "MyActivity";
 
     @Override
@@ -49,6 +53,8 @@ public class CreateProfile extends AppCompatActivity {
         buttonCreateProfile=findViewById(R.id.buttonCreateProfile);
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
+        profileInterests=findViewById(R.id.profileInterests);
+        profileCategories=findViewById(R.id.profileCategories);
 
 
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +68,7 @@ public class CreateProfile extends AppCompatActivity {
                 String confPass=confPassword.getText().toString();
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
+
 
                 //if (email!= null) {
                    // firstName = email.getFirstName();
