@@ -1,5 +1,6 @@
 package com.example.thefriendzone;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +31,6 @@ public class CreateProfile extends AppCompatActivity {
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     private static final String TAG = "MyActivity";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

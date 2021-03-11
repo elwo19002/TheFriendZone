@@ -19,8 +19,16 @@ import android.widget.SpinnerAdapter;
  * and the user presses it. This allows for the selection of more than one option.
  */
 public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpinner implements OnMultiChoiceClickListener {
-    String[] _items = { "Drawing", "Singing", "Dancing", "Basketball", "Baseball", "Football", "Song-Writer", "Pianist", "Guitarist", "Actor", "Trapeze Artist" };
-    boolean[] _selection = null;
+    String[] _items = { "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
+            "Arts & Crafts: Drawing", "Arts & Crafts: Ceramics", "Arts & Crafts: Photography", "Arts & Crafts: Sewing", "Arts & Crafts: Wood Working",
+            "Games: Arcade", "Games: Card", "Games: Board", "Games: Video", "Games: GeoCaching",
+            "Electronics: Web Design", "Electronics: Remote Control", "Electronics: Communication", "Electronics: Robotics", "Coding",
+            "Sports & Outdoors: Body Building", "Sports & Outdoors: Shooting", "Sports & Outdoors: Water", "Sports & Outdoors: Cardio", "Sports & Outdoors: Snow",
+            "Performing Arts: Dancing", "Performing Arts: Singing", "Performing Arts: Acting", "Performing Arts: Magic", "Performing Arts: Puppetry",
+            "Music: Composer", "Music: Guitarist", "Music: Singer", "Music: Musicals", "Music: Beat Boxing",
+            "Food & Drink: Taste Tester", "Food & Drink: Baker", "Food & Drink: Cook", "Food & Drink: Sweet", "Food & Drink: Savory",
+            "Pets & Animals: Cats", "Pets & Animals: Dogs", "Pets & Animals: Birds", "Pets & Animals: Reptiles", "Pets & Animals: Insect-Spiders"};
+    boolean[] _selection = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
     ArrayAdapter<String> _proxyAdapter;
 
@@ -106,19 +114,6 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
         Arrays.fill(_selection, false);
     }
 
-    /**
-     * Sets the selected options based on an array of string.
-     * @param selection
-     */
-    public void setSelection(String[] selection) {
-        for (String sel : selection) {
-            for (int j = 0; j < _items.length; ++j) {
-                if (_items[j].equals(sel)) {
-                    _selection[j] = true;
-                }
-            }
-        }
-    }
 
     /**
      * Sets the selected options based on a list of string.

@@ -19,8 +19,8 @@ import android.widget.SpinnerAdapter;
  * and the user presses it. This allows for the selection of more than one option.
  */
 public class MultiSelectCategories extends androidx.appcompat.widget.AppCompatSpinner implements OnMultiChoiceClickListener {
-    String[] _items = { "Art", "Sports", "Media", "Music", "Performing Arts" };
-    boolean[] _selection = null;
+    String[] _items = {"Collecting", "Arts & Crafts", "Games", "Electronics", "Sports & Outdoors", "Performing Arts", "Music", "Food & Drinks", "Pets & Animals"};
+    boolean[] _selection = {false, false, false, false, false, false, false, false, false};
 
     ArrayAdapter<String> _proxyAdapter;
 
@@ -91,6 +91,7 @@ public class MultiSelectCategories extends androidx.appcompat.widget.AppCompatSp
     public void setItems(String[] items) {
         _items = items;
         _selection = new boolean[_items.length];
+
 
         Arrays.fill(_selection, false);
     }
