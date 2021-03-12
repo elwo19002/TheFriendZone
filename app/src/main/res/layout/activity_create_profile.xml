@@ -18,7 +18,7 @@
 
     <EditText
         android:id="@+id/createFirstName"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="65dp"
         android:layout_centerHorizontal="true"
@@ -27,7 +27,7 @@
 
     <EditText
         android:id="@+id/createLastName"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="120dp"
         android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
 
     <EditText
         android:id="@+id/createEmailAddress"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="175dp"
         android:layout_centerHorizontal="true"
@@ -45,48 +45,46 @@
 
     <EditText
         android:id="@+id/createPassword"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="230dp"
         android:layout_centerHorizontal="true"
         android:hint="Password"
-        android:inputType="textPassword"
-        />
+        android:inputType="textPassword"/>
 
-    <!--Website to help with drop-down menus: https://developer.android.com/guide/topics/ui/controls/spinner-->
     <EditText
         android:id="@+id/confPassword"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="285dp"
         android:layout_centerHorizontal="true"
         android:hint="Confirm Password"
         android:inputType="textPassword"/>
 
-
-
-    <com.example.thefriendzone.MultiSelectCategories
-        android:id="@+id/profileCategories"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="340dp"
-        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:text="Select Your Interests:"
+        android:layout_marginBottom="5dp"
+        />
 
     <com.example.thefriendzone.MultiSelectInterests
         android:id="@+id/profileInterests"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="395dp"
-        android:text="My Interests"/>
+        android:layout_marginTop="400dp"/>
 
     <EditText
         android:id="@+id/profileBio"
-        android:layout_width="fill_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
-        android:hint="Create a Description"
-        android:inputType="textPersonName" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="340dp"
+        android:hint="Create a Profile Bio"
+        android:inputType="textPersonName"/>
 
     <CheckBox
         android:id="@+id/checkBoxTerms"
@@ -110,7 +108,6 @@
         android:layout_height="45dp"
         android:layout_marginTop="550dp"
         android:layout_centerHorizontal="true"
-
         android:text="Create Profile"/>
 
 </RelativeLayout>
