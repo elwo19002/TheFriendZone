@@ -29,7 +29,7 @@ public class CreateProfile extends AppCompatActivity {
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     com.example.thefriendzone.MultiSelectInterests profileInterests;
-    com.example.thefriendzone.MultiSelectCategories profileCategories;
+
 
     private static final String TAG = "MyActivity";
 
@@ -51,7 +51,7 @@ public class CreateProfile extends AppCompatActivity {
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
         profileInterests=findViewById(R.id.profileInterests);
-        profileCategories=findViewById(R.id.profileCategories);
+
 
 
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {

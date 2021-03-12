@@ -65,12 +65,7 @@
 
 
 
-    <com.example.thefriendzone.MultiSelectCategories
-        android:id="@+id/profileCategories"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="340dp"
-        android:layout_centerHorizontal="true"/>
+
 
     <com.example.thefriendzone.MultiSelectInterests
         android:id="@+id/profileInterests"
