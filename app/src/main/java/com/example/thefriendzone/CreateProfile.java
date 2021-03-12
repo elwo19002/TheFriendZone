@@ -1,7 +1,9 @@
 package com.example.thefriendzone;
 
-import android.content.DialogInterface;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,10 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.security.AccessController.getContext;
 
 
 public class CreateProfile extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class CreateProfile extends AppCompatActivity {
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     com.example.thefriendzone.MultiSelectInterests profileInterests;
+
 
     private static final String TAG = "MyActivity";
 
@@ -52,7 +55,8 @@ public class CreateProfile extends AppCompatActivity {
         buttonCreateProfile=findViewById(R.id.buttonCreateProfile);
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
-        profileInterests=findViewById(R.id.profileInterests);
+        MultiSelectInterests profileInterests = (MultiSelectInterests)findViewById(R.id.profileInterests);
+
 
 
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,8 @@ public class CreateProfile extends AppCompatActivity {
                 String confPass=confPassword.getText().toString();
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
+                List<String> selected = profileInterests.getSelectedStrings();
+
 
 
                 if(firstName.isEmpty()){
@@ -125,30 +131,16 @@ public class CreateProfile extends AppCompatActivity {
                             newMap.put("First", firstName);
                             newMap.put("Last", lastName);
                             newMap.put("Bio", bio);
+                            newMap.put("Interests", selected);
 
                             current_user_db.setValue(newMap);
+                            startActivity(new Intent(getApplicationContext(), FriendZone.class));
 
                         }
                     }
 
                 });
             }
-
-//                    @Override
-//                    public void onSuccess(AuthResult authResult) {
-//                        //send user to next page. Eventually send to matches, for now FriendZone
-//                        startActivity(new Intent(getApplicationContext(), FriendZone.class));
-//                        Toast.makeText(CreateProfile.this, "Profile Created", Toast.LENGTH_SHORT).show();
-//                        finish();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                });
 
 
 
