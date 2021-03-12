@@ -1,7 +1,9 @@
 package com.example.thefriendzone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.security.AccessController.getContext;
 
 
 public class CreateProfile extends AppCompatActivity {
@@ -65,6 +69,10 @@ public class CreateProfile extends AppCompatActivity {
                 String confPass=confPassword.getText().toString();
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
+                MultiSelectInterests interest = new MultiSelectInterests(getContext());
+                String myInterests=interest.buildSelectedItemString();
+
+
 
 
                 //if (email!= null) {

@@ -176,7 +176,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      * Builds the string for display in the spinner.
      * @return comma-separated list of selected items
      */
-    private String buildSelectedItemString() {
+    public String buildSelectedItemString() {
         StringBuilder sb = new StringBuilder();
         boolean foundOne = false;
 
@@ -193,4 +193,5 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
 
         return sb.toString();
     }
+
 }
