@@ -1,9 +1,7 @@
 package com.example.thefriendzone;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,20 +18,22 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.security.AccessController.getContext;
 
-/** The create profile class allows the user to make an account in firebase and store their information in it.*/
 public class CreateProfile extends AppCompatActivity {
     EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
     Button buttonCreateProfile;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     com.example.thefriendzone.MultiSelectInterests profileInterests;
+    User user;
+    DocumentReference reference;
 
 
     private static final String TAG = "MyActivity";
@@ -44,9 +44,13 @@ public class CreateProfile extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
 
+        user = new User();
         createFirstName= findViewById(R.id.createFirstName);
         createLastName= findViewById(R.id.createLastName);
         createEmailAddress=findViewById(R.id.createEmailAddress);
@@ -128,16 +132,25 @@ public class CreateProfile extends AppCompatActivity {
                         else{
                             String user_id = fAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                            reference = db.collection("Users").document(user_id);
                             Log.i(TAG, "User account successfully created");
 
                             Map newMap = new HashMap();
-                            newMap.put("First", newProfile.firstName);
-                            newMap.put("Last", newProfile.lastName);
-                            newMap.put("Bio", newProfile.bio);
-                            newMap.put("Interests", newProfile.selected);
+                            newMap.put("First", firstName);
+                            newMap.put("Last", lastName);
+                            newMap.put("Bio", bio);
+                            newMap.put("Interests", selected);
 
 
-                            current_user_db.setValue(newMap);
+                            user.setFirstName(firstName);
+                            user.setLastName(lastName);
+                            user.setBio(bio);
+                            user.setUid(user_id.toString());
+                            user.setInterests(selected);
+
+                            current_user_db.setValue(user);
+                            reference.set(newMap);
+
                             startActivity(new Intent(getApplicationContext(), FriendZone.class));
 
                         }
