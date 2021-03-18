@@ -43,6 +43,7 @@ public class CreateProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_create_profile);
 
         createFirstName= findViewById(R.id.createFirstName);
@@ -61,17 +62,7 @@ public class CreateProfile extends AppCompatActivity {
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstName=createFirstName.getText().toString();
-                String lastName=createLastName.getText().toString();
-                String bio =profileBio.getText().toString();
-                String email=createEmailAddress.getText().toString();
-                String password=createPassword.getText().toString();
-                String confPass=confPassword.getText().toString();
-                CheckBox terms=checkBoxTerms;
-                CheckBox location=checkBoxAllowLocation;
-                MultiSelectInterests interest = new MultiSelectInterests(getContext());
-                String myInterests=interest.buildSelectedItemString();
-
+                Profile newProfile= new Profile();
 
 
 
@@ -81,49 +72,49 @@ public class CreateProfile extends AppCompatActivity {
                     //bio = email.getbio();
                 //}
 
-                if(firstName.isEmpty()){
+                if(newProfile.firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
                     Log.w(TAG, "No First Name");
                     return;
                 }
-                if(lastName.isEmpty()){
+                if(newProfile.lastName.isEmpty()){
                     createFirstName.setError("Last Name is Required");
                     Log.w(TAG, "No Last Name");
                     return;
                 }
-                if (email.isEmpty()){
+                if (newProfile.email.isEmpty()){
                     createEmailAddress.setError("Email is Required");
                     Log.w(TAG, "No Email");
                     return;
                 }
-                if (password.isEmpty()){
+                if (newProfile.password.isEmpty()){
                     createPassword.setError("Password is Required");
                     Log.w(TAG, "No Password");
                     return;
                 }
-                if (confPass.isEmpty()){
+                if (newProfile.confPass.isEmpty()){
                     confPassword.setError("We must confirm your password");
                     Log.w(TAG, "No Confirm Password");
                     return;
                 }
-                if(!password.equals(confPass)) {
+                if(!newProfile.password.equals(newProfile.confPass)) {
                     confPassword.setError("The passwords must match");
                     Log.w(TAG, "Passwords Don't Match");
                     return;
                 }
-                if (!(terms.isChecked())){
+                if (!(newProfile.terms.isChecked())){
                     checkBoxTerms.setError("You must agree to the terms");
                     Log.w(TAG, "Did not agree to terms");
                     return;
                 }
-                if (!(location.isChecked())){
+                if (!(newProfile.location.isChecked())){
                     checkBoxAllowLocation.setError("We can't find you friends if we don't know where you are");
                     Log.w(TAG, "No Location Permitted");
                 }
 
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Data Validated");
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(newProfile.email,newProfile.password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
@@ -135,12 +126,12 @@ public class CreateProfile extends AppCompatActivity {
                             Log.i(TAG, "User account successfully created");
 
                             Map newMap = new HashMap();
-                            newMap.put("First", firstName);
-                            newMap.put("Last", lastName);
-                            newMap.put("Bio", bio);
+                            newMap.put("First", newProfile.firstName);
+                            newMap.put("Last", newProfile.lastName);
+                            newMap.put("Bio", newProfile.bio);
 
                             current_user_db.setValue(newMap);
-                            startActivity(new Intent(getApplicationContext(), FriendZone.class));
+                            startActivity(new Intent(getApplicationContext(), Login.class));
 
                         }
                     }
