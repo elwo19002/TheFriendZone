@@ -22,11 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.security.AccessController.getContext;
 
-
+/** The create profile class allows the user to make an account in firebase and store their information in it.*/
 public class CreateProfile extends AppCompatActivity {
     EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
     Button buttonCreateProfile;
@@ -38,12 +39,12 @@ public class CreateProfile extends AppCompatActivity {
     private static final String TAG = "MyActivity";
 
     @Override
+    /** On create takes all of the information input on the screen and initiates its upload to firebase*/
     protected void onCreate(Bundle savedInstanceState) {
 
         fAuth = FirebaseAuth.getInstance();
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_create_profile);
 
         createFirstName= findViewById(R.id.createFirstName);
@@ -55,67 +56,71 @@ public class CreateProfile extends AppCompatActivity {
         buttonCreateProfile=findViewById(R.id.buttonCreateProfile);
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
-        profileInterests=findViewById(R.id.profileInterests);
+        MultiSelectInterests profileInterests = (MultiSelectInterests)findViewById(R.id.profileInterests);
 
 
 
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
+            /** On click verifies that all of the information in the fields are valid and complete */
             public void onClick(View v) {
-                Profile newProfile= new Profile();
+                String firstName=createFirstName.getText().toString();
+                String lastName=createLastName.getText().toString();
+                String bio =profileBio.getText().toString();
+                String email=createEmailAddress.getText().toString();
+                String password=createPassword.getText().toString();
+                String confPass=confPassword.getText().toString();
+                CheckBox terms=checkBoxTerms;
+                CheckBox location=checkBoxAllowLocation;
+                List<String> selected = profileInterests.getSelectedStrings();
 
 
 
-                //if (email!= null) {
-                   // firstName = email.getFirstName();
-                   // lastName = email.getLastName();
-                    //bio = email.getbio();
-                //}
-
-                if(newProfile.firstName.isEmpty()){
+                if(firstName.isEmpty()){
                     createFirstName.setError("First Name is Required");
                     Log.w(TAG, "No First Name");
                     return;
                 }
-                if(newProfile.lastName.isEmpty()){
+                if(lastName.isEmpty()){
                     createFirstName.setError("Last Name is Required");
                     Log.w(TAG, "No Last Name");
                     return;
                 }
-                if (newProfile.email.isEmpty()){
+                if (email.isEmpty()){
                     createEmailAddress.setError("Email is Required");
                     Log.w(TAG, "No Email");
                     return;
                 }
-                if (newProfile.password.isEmpty()){
+                if (password.isEmpty()){
                     createPassword.setError("Password is Required");
                     Log.w(TAG, "No Password");
                     return;
                 }
-                if (newProfile.confPass.isEmpty()){
+                if (confPass.isEmpty()){
                     confPassword.setError("We must confirm your password");
                     Log.w(TAG, "No Confirm Password");
                     return;
                 }
-                if(!newProfile.password.equals(newProfile.confPass)) {
+                if(!password.equals(confPass)) {
                     confPassword.setError("The passwords must match");
                     Log.w(TAG, "Passwords Don't Match");
                     return;
                 }
-                if (!(newProfile.terms.isChecked())){
+                if (!(terms.isChecked())){
                     checkBoxTerms.setError("You must agree to the terms");
                     Log.w(TAG, "Did not agree to terms");
                     return;
                 }
-                if (!(newProfile.location.isChecked())){
+                if (!(location.isChecked())){
                     checkBoxAllowLocation.setError("We can't find you friends if we don't know where you are");
                     Log.w(TAG, "No Location Permitted");
                 }
 
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Data Validated");
-                fAuth.createUserWithEmailAndPassword(newProfile.email,newProfile.password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CreateProfile.this, new OnCompleteListener<AuthResult>() {
                     @Override
+                    /** On complete finishes making the actual profile and shows a toast when the account is made successfully */
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
                             Toast.makeText(CreateProfile.this, "Error creating user", Toast.LENGTH_SHORT).show();
@@ -129,31 +134,17 @@ public class CreateProfile extends AppCompatActivity {
                             newMap.put("First", newProfile.firstName);
                             newMap.put("Last", newProfile.lastName);
                             newMap.put("Bio", newProfile.bio);
+                            newMap.put("Interests", newProfile.selected);
+
 
                             current_user_db.setValue(newMap);
-                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            startActivity(new Intent(getApplicationContext(), FriendZone.class));
 
                         }
                     }
 
                 });
             }
-
-//                    @Override
-//                    public void onSuccess(AuthResult authResult) {
-//                        //send user to next page. Eventually send to matches, for now FriendZone
-//                        startActivity(new Intent(getApplicationContext(), FriendZone.class));
-//                        Toast.makeText(CreateProfile.this, "Profile Created", Toast.LENGTH_SHORT).show();
-//                        finish();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(CreateProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                });
 
 
 

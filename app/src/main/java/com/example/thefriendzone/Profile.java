@@ -24,14 +24,13 @@ import java.util.Map;
 
 import static java.security.AccessController.getContext;
 
-
+/** The profile class is the bridge that stores all of the users account information on firebase. */
 public class Profile {
     EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
     Button buttonCreateProfile;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     com.example.thefriendzone.MultiSelectInterests profileInterests;
-
 
     private static final String TAG = "MyActivity";
 

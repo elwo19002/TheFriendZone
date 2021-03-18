@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+/** The login class allows the user to verify their firebase account and access the information that it holds.*/
 public class Login extends AppCompatActivity {
 
     Button buttonCreateProfile, buttonLogin;
@@ -24,6 +24,7 @@ public class Login extends AppCompatActivity {
     private static final String TAG = "MyActivity";
 
     @Override
+    /** On create checks to make sure they entered valid login credentials and allows them in to their account. */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -33,6 +34,7 @@ public class Login extends AppCompatActivity {
         buttonCreateProfile=findViewById(R.id.btnCreateAccount);
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
+            /** On click takes the user to create an account if they don't already have one. */
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CreateProfile.class));
             }
@@ -44,6 +46,7 @@ public class Login extends AppCompatActivity {
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
+            /** On click verifies that all of the fields are completed before allowing the user to attempt to login.*/
             public void onClick(View v) {
                 // extract or validate
                 if(user_email.getText().toString().isEmpty()){
@@ -60,6 +63,7 @@ public class Login extends AppCompatActivity {
 
                 firebaseAuth.signInWithEmailAndPassword(user_email.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
+                    /** On success verifies that the user has an account and allows them to login. */
                     public void onSuccess(AuthResult authResult) {
                         //Successful Login
                         startActivity(new Intent(getApplicationContext(), FriendZone.class));
@@ -68,6 +72,7 @@ public class Login extends AppCompatActivity {
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
+                    /** On failure recognizes that the account credentials are invalid and lets the user know.  */
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -80,6 +85,7 @@ public class Login extends AppCompatActivity {
     }
 
     @Override
+    /** On start takes the user to the friendzone if they successfully login. */
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
