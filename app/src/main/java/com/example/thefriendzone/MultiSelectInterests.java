@@ -19,7 +19,7 @@ import android.widget.SpinnerAdapter;
  * and the user presses it. This allows for the selection of more than one option.
  */
 public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpinner implements OnMultiChoiceClickListener {
-    String[] _items = { "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
+    String[] strings = { "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
             "Arts & Crafts: Drawing", "Arts & Crafts: Ceramics", "Arts & Crafts: Photography", "Arts & Crafts: Sewing", "Arts & Crafts: Wood Working",
             "Games: Arcade", "Games: Card", "Games: Board", "Games: Video", "Games: GeoCaching",
             "Electronics: Web Design", "Electronics: Remote Control", "Electronics: Communication", "Electronics: Robotics", "Coding",
@@ -78,7 +78,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
     @Override
     public boolean performClick() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMultiChoiceItems(_items, _selection, this);
+        builder.setMultiChoiceItems(strings, _selection, this);
         builder.show();
         return true;
     }
@@ -97,8 +97,8 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      * @param items
      */
     public void setItems(String[] items) {
-        _items = items;
-        _selection = new boolean[_items.length];
+        strings = items;
+        _selection = new boolean[strings.length];
 
         Arrays.fill(_selection, false);
     }
@@ -108,8 +108,8 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      * @param items
      */
     public void setItems(List<String> items) {
-        _items = items.toArray(new String[items.size()]);
-        _selection = new boolean[_items.length];
+        strings = items.toArray(new String[items.size()]);
+        _selection = new boolean[strings.length];
 
         Arrays.fill(_selection, false);
     }
@@ -121,8 +121,8 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      */
     public void setSelection(List<String> selection) {
         for (String sel : selection) {
-            for (int j = 0; j < _items.length; ++j) {
-                if (_items[j].equals(sel)) {
+            for (int j = 0; j < strings.length; ++j) {
+                if (strings[j].equals(sel)) {
                     _selection[j] = true;
                 }
             }
@@ -150,9 +150,9 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      */
     public List<String> getSelectedStrings() {
         List<String> selection = new LinkedList<String>();
-        for (int i = 0; i < _items.length; ++i) {
+        for (int i = 0; i < strings.length; ++i) {
             if (_selection[i]) {
-                selection.add(_items[i]);
+                selection.add(strings[i]);
             }
         }
         return selection;
@@ -164,7 +164,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      */
     public List<Integer> getSelectedIndicies() {
         List<Integer> selection = new LinkedList<Integer>();
-        for (int i = 0; i < _items.length; ++i) {
+        for (int i = 0; i < strings.length; ++i) {
             if (_selection[i]) {
                 selection.add(i);
             }
@@ -180,14 +180,14 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
         StringBuilder sb = new StringBuilder();
         boolean foundOne = false;
 
-        for (int i = 0; i < _items.length; ++i) {
+        for (int i = 0; i < strings.length; ++i) {
             if (_selection[i]) {
                 if (foundOne) {
                     sb.append(", ");
                 }
                 foundOne = true;
 
-                sb.append(_items[i]);
+                sb.append(strings[i]);
             }
         }
 
