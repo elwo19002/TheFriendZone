@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="225dp"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName" />
 
     <EditText
@@ -34,7 +34,7 @@
         android:layout_marginTop="285dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
 
     <Button
@@ -52,9 +52,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="175dp"
         android:layout_marginTop="430dp"
-        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
         android:textColor="@android:color/black"
-        android:text="Create Account" />
+        android:text="Create Account"
+        android:stateListAnimator="@null"/>
 
 
 
