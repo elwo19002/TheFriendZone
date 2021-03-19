@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="175dp"
         android:layout_marginTop="430dp"
-        android:background="background/white"
+        android:background="@android:color/white"
         android:textColor="@android:color/black"
         android:text="Create Account" />
 
