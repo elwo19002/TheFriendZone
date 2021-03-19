@@ -1,8 +1,5 @@
 package com.example.thefriendzone;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        buttonCreateProfile=findViewById(R.id.btnCreateAccount);
+        buttonCreateProfile = findViewById(R.id.btnCreateAccount);
         buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             /** On click takes the user to create an account if they don't already have one. */
