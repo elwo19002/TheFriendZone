@@ -48,12 +48,14 @@ public class FriendZone extends AppCompatActivity {
         //1. SELECT * FROM Artists
         dbInterests = FirebaseDatabase.getInstance().getReference("interests");
         List<String> x = user.getInterests();
-        for (int i = 0; i < x.size(); i++){
+        //for (int i = 0; i < x.size(); i++){
 
-            Query query = FirebaseDatabase.getInstance().getReference("Users")
-                    .orderByChild("interests")
-                    .equalTo(String.valueOf(x));
-        }
+        Query query = FirebaseDatabase.getInstance().getReference("Users")
+                .orderByChild("interests")
+                .equalTo(String.valueOf(x));
+
+
+
 
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -73,6 +75,8 @@ public class FriendZone extends AppCompatActivity {
 
             }
         };
+
+        query.addValueEventListener(valueEventListener);
 
 
         //This is the logout button.
