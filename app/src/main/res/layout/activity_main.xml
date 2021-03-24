@@ -4,18 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FriendZone">
+    tools:context="com.example.thefriendzone.FriendZone">
 
-
-    <TextView
-        android:id="@+id/interests"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:layout_marginTop="62dp"
-        android:textSize="50sp" />
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/btnLogout"

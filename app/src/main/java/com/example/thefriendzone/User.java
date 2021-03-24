@@ -7,7 +7,7 @@ public class User {
     String lastName;
     String bio;
     String uid;
-    List<String> interests;
+    private List<String> interests;
 
 
 
