@@ -150,8 +150,9 @@ public class CreateProfile extends AppCompatActivity {
 
                             current_user_db.setValue(user);
                             reference.set(newMap);
-
-                            startActivity(new Intent(getApplicationContext(), FriendZone.class));
+                            Intent intent = new Intent(getApplicationContext(), FriendZone.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
 
                         }
                     }

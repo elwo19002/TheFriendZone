@@ -22,7 +22,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
     String[] strings = { "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
             "Arts & Crafts: Drawing", "Arts & Crafts: Ceramics", "Arts & Crafts: Photography", "Arts & Crafts: Sewing", "Arts & Crafts: Wood Working",
             "Games: Arcade", "Games: Card", "Games: Board", "Games: Video", "Games: GeoCaching",
-            "Electronics: Web Design", "Electronics: Remote Control", "Electronics: Communication", "Electronics: Robotics", "Coding",
+            "Electronics: Web Design", "Electronics: Remote Control", "Electronics: Communication", "Electronics: Robotics", "Electronics: Coding",
             "Sports & Outdoors: Body Building", "Sports & Outdoors: Shooting", "Sports & Outdoors: Water", "Sports & Outdoors: Cardio", "Sports & Outdoors: Snow",
             "Performing Arts: Dancing", "Performing Arts: Singing", "Performing Arts: Acting", "Performing Arts: Magic", "Performing Arts: Puppetry",
             "Music: Composer", "Music: Guitarist", "Music: Singer", "Music: Musicals", "Music: Beat Boxing",

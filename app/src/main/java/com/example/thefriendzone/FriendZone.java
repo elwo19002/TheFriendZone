@@ -27,7 +27,7 @@ public class FriendZone extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MatchesAdapter adapter;
     private List<User> usersList;
-    User user;
+    private User user;
 
     DatabaseReference dbInterests;
 
@@ -37,17 +37,16 @@ public class FriendZone extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button logout = findViewById(R.id.btnLogout);
 
-
+        this.user = (User) getIntent().getSerializableExtra("user");
         recyclerView = findViewById(R.id.recyclerView); //XML not ready.
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         usersList = new ArrayList<>();
-        adapter = new MatchesAdapter(this, usersList);
-        recyclerView.setAdapter(adapter);
+
 
         //1. SELECT * FROM Artists
         dbInterests = FirebaseDatabase.getInstance().getReference("interests");
-        List<String> x = user.getInterests();
+        List<String> x = this.user.getInterests();
         //for (int i = 0; i < x.size(); i++){
 
         Query query = FirebaseDatabase.getInstance().getReference("Users")
@@ -77,7 +76,8 @@ public class FriendZone extends AppCompatActivity {
         };
 
         query.addValueEventListener(valueEventListener);
-
+        adapter = new MatchesAdapter(this, usersList);
+        recyclerView.setAdapter(adapter);
 
         //This is the logout button.
         logout.setOnClickListener(new View.OnClickListener() {

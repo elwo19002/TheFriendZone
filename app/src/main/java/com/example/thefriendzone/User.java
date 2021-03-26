@@ -1,8 +1,9 @@
 package com.example.thefriendzone;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     String firstName;
     String lastName;
     String bio;
