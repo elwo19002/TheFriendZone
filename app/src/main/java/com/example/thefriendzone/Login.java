@@ -15,6 +15,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 /** The login class allows the user to verify their firebase account and access the information that it holds.*/
 public class Login extends AppCompatActivity {
 
@@ -89,11 +93,18 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            //User user = firebaseAuth.getCurrentUser()
-            //Intent intent = new Intent(getApplicationContext(), FriendZone.class);
-            //intent.putExtra("user", user);
-            //startActivity(intent);
-            startActivity(new Intent(getApplicationContext(), FriendZone.class));
+            User user = new User();
+            user.setBio("test");
+            user.setFirstName("Paul");
+            user.setLastName("Humphreys");
+            ArrayList<String> interests = new ArrayList<>();
+            interests.add("Arts & Crafts: Ceramics");
+            user.setInterests(interests);
+            user.setUid("123456");
+            Intent intent = new Intent(getApplicationContext(), FriendZone.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+            //startActivity(new Intent(getApplicationContext(), FriendZone.class));
             finish();
         }
     }

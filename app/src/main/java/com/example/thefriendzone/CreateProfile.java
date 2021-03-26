@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +77,7 @@ public class CreateProfile extends AppCompatActivity {
                 String confPass=confPassword.getText().toString();
                 CheckBox terms=checkBoxTerms;
                 CheckBox location=checkBoxAllowLocation;
-                List<String> selected = profileInterests.getSelectedStrings();
+                ArrayList<String> selected = (ArrayList<String>) profileInterests.getSelectedStrings();
 
 
 

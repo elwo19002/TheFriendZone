@@ -1,6 +1,7 @@
 package com.example.thefriendzone;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
@@ -8,7 +9,7 @@ public class User implements Serializable {
     String lastName;
     String bio;
     String uid;
-    private List<String> interests;
+    private ArrayList<String> interests;
 
 
 
@@ -51,7 +52,7 @@ public class User implements Serializable {
         return interests;
     }
 
-    public void setInterests(List<String> interests) {
+    public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
 
