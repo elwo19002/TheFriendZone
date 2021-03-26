@@ -89,6 +89,10 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            //User user = firebaseAuth.getCurrentUser()
+            //Intent intent = new Intent(getApplicationContext(), FriendZone.class);
+            //intent.putExtra("user", user);
+            //startActivity(intent);
             startActivity(new Intent(getApplicationContext(), FriendZone.class));
             finish();
         }
