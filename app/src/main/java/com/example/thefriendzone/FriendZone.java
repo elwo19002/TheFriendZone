@@ -150,16 +150,18 @@ public class FriendZone extends AppCompatActivity {
             User newUser = new User();
             if (!userCheck.getUid().equals(user.getUid())) {
                 if (userCheck.getInterests() != null) {
-                    newUser.setInterests((ArrayList<String>) userCheck.getInterests());
-                    ArrayList<String> initialArrayList = (ArrayList<String>) newUser.getInterests();
+
+                    ArrayList<String> initialArrayList = (ArrayList<String>) userCheck.getInterests();
                     ArrayList clonedList = new ArrayList();
                     clonedList = (ArrayList) initialArrayList.clone();
-                    if (clonedList.retainAll(Collections.singleton((this.user.getInterests()).size() > 0))) {
+                    clonedList.retainAll(user.getInterests());
+                    if (clonedList.size() > 0) {
                         newUser.setFirstName((String) userCheck.getFirstName());
                         newUser.setLastName((String) userCheck.getLastName());
                         newUser.setBio((String) userCheck.getBio());
                         newUser.setUid((String) userCheck.getUid());
                         newUser.setEmail((String) userCheck.getEmail());
+                        newUser.setInterests((ArrayList<String>) userCheck.getInterests());
                         usersList.add(newUser);
                     }
                 }
