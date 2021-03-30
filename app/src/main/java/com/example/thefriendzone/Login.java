@@ -70,7 +70,9 @@ public class Login extends AppCompatActivity {
                     /** On success verifies that the user has an account and allows them to login. */
                     public void onSuccess(AuthResult authResult) {
                         //Successful Login
-                        startActivity(new Intent(getApplicationContext(), FriendZone.class));
+                        Intent intent = new Intent(getApplicationContext(), FriendZone.class);
+                        intent.putExtra("email", user_email.getText().toString());
+                        startActivity(intent);
                         Log.i(TAG, "Sucessfully logged in");
                         finish();
                     }
@@ -93,16 +95,8 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            User user = new User();
-            user.setBio("test");
-            user.setFirstName("Paul");
-            user.setLastName("Humphreys");
-            ArrayList<String> interests = new ArrayList<>();
-            interests.add("Arts & Crafts: Ceramics");
-            user.setInterests(interests);
-            user.setUid("123456");
             Intent intent = new Intent(getApplicationContext(), FriendZone.class);
-            intent.putExtra("user", user);
+            intent.putExtra("email",FirebaseAuth.getInstance().getCurrentUser().getEmail() );
             startActivity(intent);
             //startActivity(new Intent(getApplicationContext(), FriendZone.class));
             finish();

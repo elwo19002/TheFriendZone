@@ -5,16 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
-    String firstName;
-    String lastName;
-    String bio;
-    String uid;
+    private String firstName;
+    private String lastName;
+    private String bio;
+    private String uid;
+    private String email;
     private ArrayList<String> interests;
 
 
 
 
     public User() {}
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;

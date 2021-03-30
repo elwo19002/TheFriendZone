@@ -141,6 +141,7 @@ public class CreateProfile extends AppCompatActivity {
                             newMap.put("Last", lastName);
                             newMap.put("Bio", bio);
                             newMap.put("Interests", selected);
+                            newMap.put("email", email);
 
 
                             user.setFirstName(firstName);
@@ -148,11 +149,12 @@ public class CreateProfile extends AppCompatActivity {
                             user.setBio(bio);
                             user.setUid(user_id.toString());
                             user.setInterests(selected);
+                            user.setEmail(email);
 
                             current_user_db.setValue(user);
                             reference.set(newMap);
                             Intent intent = new Intent(getApplicationContext(), FriendZone.class);
-                            intent.putExtra("user", user);
+                            intent.putExtra("email", email);
                             startActivity(intent);
 
                         }

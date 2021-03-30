@@ -149,7 +149,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
      * @return
      */
     public List<String> getSelectedStrings() {
-        List<String> selection = new LinkedList<String>();
+        List<String> selection = new ArrayList<String>();
         for (int i = 0; i < strings.length; ++i) {
             if (_selection[i]) {
                 selection.add(strings[i]);

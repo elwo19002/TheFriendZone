@@ -31,9 +31,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ArtistVi
     @Override
     public void onBindViewHolder(@NonNull ArtistViewHolder holder, int position) {
         User user = usersList.get(position);
-        holder.textViewName.setText(user.firstName);
-        holder.textViewName.setText(user.lastName);
-        holder.textViewBio.setText("Bio: " + user.bio);
+        holder.textViewName.setText(user.getFirstName());
+        holder.textViewName.setText(user.getLastName());
+        holder.textViewBio.setText("Bio: " + user.getBio());
         holder.textViewInterests.setText("Interests: " + user.getInterests());
         //holder.textViewAge.setText("Age: " + artist.age);
         //holder.textViewCountry.setText("Country: " + artist.country);
