@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class CreateProfile extends AppCompatActivity {
     EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
-    Button buttonCreateProfile;
+    Button buttonCreateProfile, buttonTandC;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
     com.example.thefriendzone.MultiSelectInterests profileInterests;
@@ -62,6 +62,17 @@ public class CreateProfile extends AppCompatActivity {
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
         checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
         MultiSelectInterests profileInterests = (MultiSelectInterests)findViewById(R.id.profileInterests);
+        buttonTandC=findViewById(R.id.btnTandC);
+
+        buttonTandC.setOnClickListener(new View.OnClickListener() {
+           @Override
+           /** On click verifies that all of the information in the fields are valid and complete */
+           public void onClick(View v) {
+               Intent intent = new Intent(getApplicationContext(), termsandconditions.class);
+               startActivity(intent);
+               finish();
+           }
+        });
 
 
 
