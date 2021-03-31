@@ -48,9 +48,12 @@ public class ListUsersAdapter extends BaseAdapter implements ListAdapter {
         TextView textViewName = (TextView)view.findViewById(R.id.userName);
         textViewName.setText(usersList.get(position).getFirstName() + " " + usersList.get(position).getLastName());
         TextView textViewBio = (TextView)view.findViewById(R.id.userBio);
-        textViewBio.setText(usersList.get(position).getBio());
+        textViewBio.setText("Biography: " + usersList.get(position).getBio());
         TextView textViewInterests = (TextView)view.findViewById(R.id.userInterests);
-        textViewInterests.setText(usersList.get(position).getInterests().toString());
+        textViewInterests.setText("Interests: " + usersList.get(position).getInterests().toString());
+        TextView textViewEmail=(TextView)view.findViewById(R.id.userEmail);
+        textViewEmail.setText("Contact Information: " + usersList.get(position).getEmail());
+
 
         return view;
     }
