@@ -64,5 +64,21 @@
         app:layout_constraintTop_toBottomOf="@+id/userInterests"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="15pt"
+        android:maxWidth="375dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userInterests"
+        app:layout_constraintVertical_bias="0.027" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

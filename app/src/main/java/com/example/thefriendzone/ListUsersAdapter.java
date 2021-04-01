@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListUsersAdapter extends BaseAdapter implements ListAdapter {

@@ -23,7 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -38,6 +37,7 @@ public class CreateProfile extends AppCompatActivity {
 
 
     private static final String TAG = "MyActivity";
+    private static final String TandC = "These are the terms and conditions of the FriendZone. This is the FriendZone. This is a place to find friends, platonic friends. Not friends with benefits or girlfriends or boyfriends. This means any asking for dates, smooches, or snuggles will get you kicked off the app. If that’s what you want, this is not the app for you. Spamming people will also get you kicked out. We will be checking the database for spam accounts.We are not responsible for any stupid actions on the part of our users. Meet in a public place, don’t exchange financial information, etc.";
 
     @Override
     /** On create takes all of the information input on the screen and initiates its upload to firebase*/
@@ -68,9 +68,7 @@ public class CreateProfile extends AppCompatActivity {
            @Override
            /** On click verifies that all of the information in the fields are valid and complete */
            public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), termsandconditions.class);
-               startActivity(intent);
-               finish();
+               Toast.makeText(CreateProfile.this, TandC, Toast.LENGTH_LONG).show();
            }
         });
 
