@@ -68,6 +68,7 @@ public class CreateProfile extends AppCompatActivity {
            @Override
            /** On click verifies that all of the information in the fields are valid and complete */
            public void onClick(View v) {
+               //Comment for Hyrum :)
                Toast.makeText(CreateProfile.this, TandC, Toast.LENGTH_LONG).show();
            }
         });
