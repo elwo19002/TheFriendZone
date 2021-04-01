@@ -32,9 +32,9 @@ public class ListUsersAdapter extends BaseAdapter implements ListAdapter {
 
     @Override
     public long getItemId(int pos) {
-        //return list.get(pos).getId();
+
         return 0;
-        //We aren't using Item ID's
+
     }
 
     @Override

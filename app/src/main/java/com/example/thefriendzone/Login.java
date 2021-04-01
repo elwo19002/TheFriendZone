@@ -98,7 +98,6 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), FriendZone.class);
             intent.putExtra("email",FirebaseAuth.getInstance().getCurrentUser().getEmail() );
             startActivity(intent);
-            //startActivity(new Intent(getApplicationContext(), FriendZone.class));
             finish();
         }
     }

@@ -47,30 +47,17 @@ public class FriendZone extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button logout = findViewById(R.id.btnLogout);
 
-        //this.user = (User) getIntent().getSerializableExtra("user");
         this.email = getIntent().getStringExtra("email");
-      //  recyclerView = findViewById(R.id.recyclerView); //XML not ready.
-       // recyclerView.setHasFixedSize(true);
-       // recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         this.lv = (ListView) findViewById(R.id.listView);
 
         usersList = new ArrayList<>();
         this.newUserList = new Users();
 
 
-        //1. SELECT * FROM Artists
-       // dbInterests = FirebaseDatabase.getInstance().getReference("interests");
-       // List<String> x = this.user.getInterests();
-        //for (int i = 0; i < x.size(); i++){
-
- //       Query query = FirebaseDatabase.getInstance().getReference("Users");
-                //.orderByChild("interests");
-                //.equalTo(String.valueOf(x));
 
 
 
-        //adapter = new MatchesAdapter(this, usersList);
-        //recyclerView.setAdapter(adapter);
 
         DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -102,34 +89,6 @@ public class FriendZone extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-        /*
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                usersList.clear();
-                //if (dataSnapshot.exists()) {
-
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        user = snapshot.getValue(User.class);
-                        usersList.add(user);
-                    }
-                    adapter.notifyDataSetChanged();
-                //}
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-
-
-
-        };
- */
-
-
- //       query.addValueEventListener(valueEventListener);
 
         //This is the logout button.
         logout.setOnClickListener(new View.OnClickListener() {
