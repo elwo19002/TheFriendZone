@@ -37,6 +37,7 @@ public class FriendZone extends AppCompatActivity {
     private Users newUserList;
     private ListView lv;
     private String email;
+    private String zipcode;
 
     DatabaseReference dbInterests;
 
@@ -46,18 +47,10 @@ public class FriendZone extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button logout = findViewById(R.id.btnLogout);
-
         this.email = getIntent().getStringExtra("email");
-
         this.lv = (ListView) findViewById(R.id.listView);
-
         usersList = new ArrayList<>();
         this.newUserList = new Users();
-
-
-
-
-
 
         DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,6 +67,7 @@ public class FriendZone extends AppCompatActivity {
                     userAdd.setUid((String) newMap.get("uid"));
                     userAdd.setEmail((String) newMap.get("email"));
                     userAdd.setInterests((ArrayList<String>) newMap.get("interests"));
+                    userAdd.setZipCode((String) newMap.get("zipCode"));
                     newUserList.getUsers().add(userAdd);
                     if (userAdd.getEmail() != null) {
                         if (userAdd.getEmail().equals(email)) {
@@ -109,23 +103,28 @@ public class FriendZone extends AppCompatActivity {
             User newUser = new User();
             if (!userCheck.getUid().equals(user.getUid())) {
                 if (userCheck.getInterests() != null) {
+                    if (userCheck.getZipCode() != null) {
+                        if (user.getZipCode().equals(userCheck.getZipCode())) {
 
-                    ArrayList<String> initialArrayList = (ArrayList<String>) userCheck.getInterests();
-                    ArrayList clonedList = new ArrayList();
-                    clonedList = (ArrayList) initialArrayList.clone();
-                    clonedList.retainAll(user.getInterests());
-                    if (clonedList.size() > 0) {
-                        newUser.setFirstName((String) userCheck.getFirstName());
-                        newUser.setLastName((String) userCheck.getLastName());
-                        newUser.setBio((String) userCheck.getBio());
-                        newUser.setUid((String) userCheck.getUid());
-                        newUser.setEmail((String) userCheck.getEmail());
-                        newUser.setInterests((ArrayList<String>) userCheck.getInterests());
-                        usersList.add(newUser);
+                            ArrayList<String> initialArrayList = (ArrayList<String>) userCheck.getInterests();
+                            ArrayList clonedList = new ArrayList();
+                            clonedList = (ArrayList) initialArrayList.clone();
+                            clonedList.retainAll(user.getInterests());
+                            if (clonedList.size() > 0) {
+                                newUser.setZipCode((String) userCheck.getZipCode());
+                                newUser.setFirstName((String) userCheck.getFirstName());
+                                newUser.setLastName((String) userCheck.getLastName());
+                                newUser.setBio((String) userCheck.getBio());
+                                newUser.setUid((String) userCheck.getUid());
+                                newUser.setEmail((String) userCheck.getEmail());
+                                newUser.setInterests((ArrayList<String>) userCheck.getInterests());
+                                usersList.add(newUser);
+                            }
+                        }
                     }
                 }
             }
-            Log.i("Paul", "Just testing");
+            Log.i("Yay", "Its working");
 
         });
         displayUsers(usersList);

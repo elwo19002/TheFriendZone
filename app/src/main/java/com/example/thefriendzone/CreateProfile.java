@@ -27,7 +27,7 @@ import java.util.Map;
 
 
 public class CreateProfile extends AppCompatActivity {
-    EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio;
+    EditText createFirstName, createLastName, createEmailAddress, createPassword, confPassword, profileBio, createZipCode;
     Button buttonCreateProfile, buttonTandC;
     CheckBox checkBoxTerms, checkBoxAllowLocation;
     FirebaseAuth fAuth;
@@ -54,13 +54,13 @@ public class CreateProfile extends AppCompatActivity {
         user = new User();
         createFirstName= findViewById(R.id.createFirstName);
         createLastName= findViewById(R.id.createLastName);
+        createZipCode =findViewById(R.id.createZipCode);
         createEmailAddress=findViewById(R.id.createEmailAddress);
         createPassword=findViewById(R.id.createPassword);
         confPassword=findViewById(R.id.confPassword);
         profileBio=findViewById(R.id.profileBio);
         buttonCreateProfile=findViewById(R.id.buttonCreateProfile);
         checkBoxTerms=findViewById(R.id.checkBoxTerms);
-        checkBoxAllowLocation=findViewById(R.id.checkBoxAllowLocation);
         MultiSelectInterests profileInterests = (MultiSelectInterests)findViewById(R.id.profileInterests);
         buttonTandC=findViewById(R.id.btnTandC);
 
@@ -68,8 +68,8 @@ public class CreateProfile extends AppCompatActivity {
            @Override
            /** On click verifies that all of the information in the fields are valid and complete */
            public void onClick(View v) {
-               //Comment for Hyrum :)
                Toast.makeText(CreateProfile.this, TandC, Toast.LENGTH_LONG).show();
+               Log.i(TAG, "TandC working");
            }
         });
 
@@ -85,8 +85,8 @@ public class CreateProfile extends AppCompatActivity {
                 String email=createEmailAddress.getText().toString();
                 String password=createPassword.getText().toString();
                 String confPass=confPassword.getText().toString();
+                String zipcode=createZipCode.getText().toString();
                 CheckBox terms=checkBoxTerms;
-                CheckBox location=checkBoxAllowLocation;
                 ArrayList<String> selected = (ArrayList<String>) profileInterests.getSelectedStrings();
 
 
@@ -125,10 +125,12 @@ public class CreateProfile extends AppCompatActivity {
                     checkBoxTerms.setError("You must agree to the terms");
                     Log.w(TAG, "Did not agree to terms");
                     return;
+
                 }
-                if (!(location.isChecked())){
-                    checkBoxAllowLocation.setError("We can't find you friends if we don't know where you are");
-                    Log.w(TAG, "No Location Permitted");
+                if(zipcode.isEmpty()){
+                    createZipCode.setError("Zip Code is Required");
+                    Log.w(TAG, "No Zip Code");
+                    return;
                 }
 
                 Toast.makeText(CreateProfile.this, "Data Validated", Toast.LENGTH_SHORT).show();
@@ -152,6 +154,7 @@ public class CreateProfile extends AppCompatActivity {
                             newMap.put("Bio", bio);
                             newMap.put("Interests", selected);
                             newMap.put("email", email);
+                            newMap.put("zipcode", zipcode);
 
 
                             user.setFirstName(firstName);
@@ -160,11 +163,13 @@ public class CreateProfile extends AppCompatActivity {
                             user.setUid(user_id.toString());
                             user.setInterests(selected);
                             user.setEmail(email);
+                            user.setZipCode(zipcode);
 
                             current_user_db.setValue(user);
                             reference.set(newMap);
                             Intent intent = new Intent(getApplicationContext(), FriendZone.class);
                             intent.putExtra("email", email);
+                            intent.putExtra("zipcode", zipcode);
                             startActivity(intent);
 
                         }

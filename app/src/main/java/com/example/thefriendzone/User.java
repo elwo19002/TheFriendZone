@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String bio;
     private String uid;
     private String email;
+    private String zipcode;
     private ArrayList<String> interests;
 
 
@@ -64,6 +65,10 @@ public class User implements Serializable {
     public void setInterests(ArrayList<String> interests) {
         this.interests = interests;
     }
+
+    public String getZipCode() { return zipcode; }
+
+    public void setZipCode(String zipcode) { this.zipcode = zipcode; }
 
 
 }

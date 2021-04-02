@@ -86,41 +86,44 @@
         android:hint="Create a Profile Bio"
         android:inputType="textPersonName"/>
 
+    <EditText
+        android:id="@+id/createZipCode"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="470dp"
+        android:hint="Enter Zip Code"
+        android:inputType="textPersonName"/>
+
     <CheckBox
         android:id="@+id/checkBoxTerms"
         android:layout_width="215dp"
         android:layout_height="35dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="155dp"
-        android:text="I accept the "/>
+        android:layout_marginTop="525dp"
+        android:layout_marginLeft="40dp"
+        android:text="I accept the "
+        android:textSize="15dp"/>
 
-    <CheckBox
-        android:id="@+id/checkBoxAllowLocation"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="500dp"
-        android:text="Allow Location" />
 
     <Button
         android:id="@+id/buttonCreateProfile"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="575dp"
         android:layout_centerHorizontal="true"
         android:text="Create Profile"/>
 
     <Button
         android:id="@+id/btnTandC"
-        android:layout_width="105dp"
+        android:layout_width="100pt"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="493dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="520dp"
         android:backgroundTint="@android:color/transparent"
         android:stateListAnimator="@null"
         android:text="Terms and Conditions"
         android:textColor="@android:color/black"
-        android:textSize="10dp" />
+        android:textSize="12dp" />
 
 
 </RelativeLayout>
