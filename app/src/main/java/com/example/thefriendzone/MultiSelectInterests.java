@@ -19,7 +19,10 @@ import android.widget.SpinnerAdapter;
  * and the user presses it. This allows for the selection of more than one option.
  */
 public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpinner implements OnMultiChoiceClickListener {
-    String[] strings = { "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
+    String[] strings = {
+            "Media: Movies", "Media: Comics", "Media: Books", "Media: Fanfiction", "Fandom: Star Wars", "Fandom: Marvel", "Fandom:DC",
+            "Fandom: Transformers", "Fandom: Harry Potter",
+            "Collecting: Antiques", "Collecting: Cars", "Collecting: Action Figures", "Collecting: Books", "Collecting: Art",
             "Arts & Crafts: Drawing", "Arts & Crafts: Ceramics", "Arts & Crafts: Photography", "Arts & Crafts: Sewing", "Arts & Crafts: Wood Working",
             "Games: Arcade", "Games: Card", "Games: Board", "Games: Video", "Games: GeoCaching",
             "Electronics: Web Design", "Electronics: Remote Control", "Electronics: Communication", "Electronics: Robotics", "Electronics: Coding",
