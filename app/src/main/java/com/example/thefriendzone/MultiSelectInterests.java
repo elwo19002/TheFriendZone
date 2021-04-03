@@ -31,7 +31,7 @@ public class MultiSelectInterests extends androidx.appcompat.widget.AppCompatSpi
             "Music: Composer", "Music: Guitarist", "Music: Singer", "Music: Musicals", "Music: Beat Boxing",
             "Food & Drink: Taste Tester", "Food & Drink: Baker", "Food & Drink: Cook", "Food & Drink: Sweet", "Food & Drink: Savory",
             "Pets & Animals: Cats", "Pets & Animals: Dogs", "Pets & Animals: Birds", "Pets & Animals: Reptiles", "Pets & Animals: Insect-Spiders"};
-    boolean[] _selection = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+    boolean[] _selection = {false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false};
 
     ArrayAdapter<String> _proxyAdapter;
 
